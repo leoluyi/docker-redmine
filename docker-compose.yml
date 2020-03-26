@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+  postgresql:
+    image: sameersbn/postgresql:9.6-4
+    # https://github.com/sameersbn/docker-redmine
+    restart: always
+    environment:
+    - DB_USER=redmine
+    - DB_PASS=password
+    - DB_NAME=redmine_production
+    volumes:
+    - ./redmine/postgresql:/var/lib/postgresql
+
+  redmine:
+    image: sameersbn/redmine:3.4.13
+    restart: always
+    depends_on:
+    - postgresql
+    env_file: .env
+    environment:
+    - TZ=Asia/Kolkata
+
+    - DB_ADAPTER=postgresql
+    - DB_HOST=postgresql
+    - DB_PORT=5432
+    - DB_USER=redmine
+    - DB_PASS=password
+    - DB_NAME=redmine_production
+
+    - REDMINE_PORT=10084
+    - REDMINE_HTTPS=true
+    - REDMINE_RELATIVE_URL_ROOT=
+    - REDMINE_SECRET_TOKEN=
+
+    - REDMINE_SUDO_MODE_ENABLED=false
+    - REDMINE_SUDO_MODE_TIMEOUT=15
+
+    - REDMINE_CONCURRENT_UPLOADS=2
+
+    - REDMINE_BACKUP_SCHEDULE=daily
+    - REDMINE_BACKUP_EXPIRY=86400
+    - REDMINE_BACKUP_TIME=22:00
+
+    ports:
+    - "10084:80"
+
+    volumes:
+    - redmine-data:/home/redmine/data
+
+volumes:
+  redmine-data:
