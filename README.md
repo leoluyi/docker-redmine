@@ -1,5 +1,7 @@
 # README
 
+Docker Image for Redmine [sameersbn/docker-redmine](https://github.com/sameersbn/docker-redmine)
+
 ## Get Started
 
 ```
