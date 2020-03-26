@@ -35,8 +35,9 @@ mkdir -p /srv/docker/redmine/redmine/plugins
 - Redmine Lightbox 2
 - Redmine Mentions
 - Redmine Omniauth Google plugin
-    - Checkout Google OAuth Login
-      ![google_auth](/assets/img/google-OAuth-login.png)]
+    - Checkout the Google OAuth Login documentation
+
+![google_auth](/assets/img/google-OAuth-login.png)
 
 ## References
 

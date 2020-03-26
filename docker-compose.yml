@@ -10,7 +10,7 @@ services:
     - DB_PASS=password
     - DB_NAME=redmine_production
     volumes:
-    - ./redmine/postgresql:/var/lib/postgresql
+    - db-data:/var/lib/postgresql
 
   redmine:
     image: sameersbn/redmine:3.4.13
@@ -50,3 +50,4 @@ services:
 
 volumes:
   redmine-data:
+  db-data:
